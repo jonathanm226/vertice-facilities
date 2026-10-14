@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vértice Facilities Consulting | Gestão inteligente. Resultados reais.</title>
+    <style>
+        :root {
+            --primary-color: #122a46; /* Azul Escuro */
+            --secondary-color: #f4f4f4; /* Cinza claro fundo */
+            --text-color: #333;
+            --accent-color: #e86c24; /* Laranja Vértice */
+            --header-height: 90px;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: var(--header-height); 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--secondary-color);
+        }
+
+        header {
+            background: #fff;
+            padding: 0 5%;
+            height: var(--header-height);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 100;
+        }
+
+        /* Ajuste do alinhamento da Logo */
+        .logo-container {
+            display: flex;
+            align-items: center;
+            height: 100%;
+            text-decoration: none;
+            padding: 5px 0;
+        }
+
+        .logo {
+            max-height: 75px;
+            width: auto;
+            object-fit: contain;
+            display: block;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(18, 42, 70, 0.75), rgba(18, 42, 70, 0.85)), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80') center/cover;
+            color: #fff;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            margin-top: var(--header-height);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            max-width: 900px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            background: var(--accent-color);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: transform 0.3s, background 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background: #cc5c1d;
+            transform: translateY(-2px);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 5%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .about h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about p {
+            max-width: 800px;
+            margin: 0 auto 1.5rem auto;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        /* Services */
+        .services {
+            padding: 5rem 5%;
+            text-align: center;
+            background: var(--secondary-color);
+        }
+
+        .services h2 {
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            font-size: 2.2rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: #fff;
+            padding: 2.5rem 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+            border-top: 6px solid var(--accent-color);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .card p {
+            font-size: 0.95rem;
+            color: #555;
+        }
+
+        /* Metodologia */
+        .metodologia {
+            padding: 5rem 5%;
+            background: #fff;
+            text-align: center;
+        }
+
+        .metodologia h2 {
+            color: var(--primary-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .metodologia > p {
+            margin-bottom: 3rem;
+            color: #555;
+        }
+
+        .steps-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .step-box {
+            background: var(--secondary-color);
+            padding: 1.8rem 1.2rem;
+            border-radius: 8px;
+            border-left: 5px solid var(--primary-color);
+            text-align: left;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+
+        .step-box h4 {
+            color: var(--accent-color);
+            margin-bottom: 0.8rem;
+            font-size: 1.15rem;
+        }
+
+        .step-box p {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        /* Contact */
+        .contact {
+            padding: 4rem 5% 6rem;
+            text-align: center;
+            background: var(--secondary-color);
+        }
+
+        .contact h2 {
+            color: var(--text-color);
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact form {
+            max-width: 800px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .contact input, .contact textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            background: #fff;
+        }
+
+        .contact textarea {
+            grid-column: span 2;
+        }
+
+        .contact input:focus, .contact textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .contact button {
+            grid-column: span 2;
+            padding: 15px;
+            background: var(--primary-color);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 10px;
+        }
+
+        .contact button:hover {
+            background: var(--accent-color);
+        }
+
+        footer {
+            background: var(--primary-color);
+            color: #fff;
+            text-align: center;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .contact form {
+                grid-template-columns: 1fr;
+            }
+            .contact button, .contact textarea {
+                grid-column: span 1;
+            }
+            header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px;
+            }
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            .hero {
+                margin-top: 140px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="#inicio" class="logo-container">
+            <img src="PHOTO-2026-10-14-11-46-13.jpg" alt="Vértice Facilities Consulting Logo" class="logo">
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Início</a></li>
+                <li><a href="#sobre">Quem Somos</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#metodologia">Como Funciona</a></li>
+                <li><a href="#contato">Fale Conosco</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="inicio" class="hero">
+        <h1>Otimização e Excelência na Gestão de Facilities</h1>
+        <p>Reduza custos, aumente a segurança e garanta a conservação impecável da sua planta industrial ou corporativa com nossa consultoria especializada.</p>
+        <a href="#contato" class="btn">Solicitar Diagnóstico Gratuito</a>
+    </section>
+
+    <!-- Quem Somos -->
+    <section id="sobre" class="about">
+        <h2>A Vértice Consultoria</h2>
+        <p>Somos uma consultoria de gestão operacional focada em ajudar clientes a organizar processos, acompanhar indicadores, identificar desperdícios e melhorar o desempenho dos contratos. Nossa proposta de valor central é transformar os desafios da sua operação em processos claros, indicadores úteis e planos de melhoria que apoiem suas decisões gerenciais.</p>
+        
+        <p><strong>Nosso Público:</strong> Atendemos empresas de limpeza técnica e convencional com contratos em indústrias, centros logísticos e edifícios comerciais. Se a sua empresa possui dificuldade em controlar absenteísmo, produtividade, quadro de pessoal ou custos, nós estruturamos a gestão, os indicadores e as rotinas de supervisão para alavancar seus resultados.</p>
+    </section>
+
+    <!-- Catálogo de Serviços -->
+    <section id="servicos" class="services">
+        <h2>Catálogo de Serviços</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Diagnóstico Operacional</h3>
+                <p>Realizamos entrevistas, analisamos os dados disponíveis e identificamos os principais achados operacionais para construir um plano de ação priorizado.</p>
+            </div>
+            <div class="card">
+                <h3>Indicadores e Dashboard</h3>
+                <p>Desenvolvimento de painéis interativos em Excel ou Power BI, com entrega de um dicionário de indicadores e treinamento de orientação para uso.</p>
+            </div>
+            <div class="card">
+                <h3>Procedimentos Operacionais</h3>
+                <p>Estruturamos e implementamos procedimentos técnicos, checklists, fluxos e padrões de execução totalmente alinhados e acordados com o cliente.</p>
+            </div>
+            <div class="card">
+                <h3>Acompanhamento Mensal</h3>
+                <p>Mantemos a operação nos trilhos através de reuniões periódicas, leitura analítica de indicadores, registro de ações e recomendações contínuas.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Metodologia do Diagnóstico -->
+    <section id="metodologia" class="metodologia">
+        <h2>Diagnóstico Operacional de Facilities</h2>
+        <p>Conheça as etapas do nosso produto de entrada recomendado.</p>
+        <div class="steps-container">
+            <div class="step-box">
+                <h4>1. Levantamento</h4>
+                <p>Reunião inicial de alinhamento para entender o contexto do contrato e coleta de dados autorizados.</p>
+            </div>
+            <div class="step-box">
+                <h4>2. Análise</h4>
+                <p>Avaliação aprofundada de indicadores, rotinas, dimensionamento e pontos críticos conforme o escopo.</p>
+            </div>
+            <div class="step-box">
+                <h4>3. Plano de Ação</h4>
+                <p>Definição de prioridades, responsáveis sugeridos, estabelecimento de prazos e medidas de acompanhamento.</p>
+            </div>
+            <div class="step-box">
+                <h4>4. Devolutiva</h4>
+                <p>Apresentação executiva completa dos achados e proposta opcional de implementação de melhorias.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Formulário de Contato -->
+    <section id="contato" class="contact">
+        <h2>Agende uma Reunião</h2>
+        <p style="margin-bottom: 2rem; color: #555;">Gostaria de apresentar nossa proposta e entender os principais desafios da operação de vocês. Podemos agendar uma breve conversa?</p>
+        <form id="leadForm">
+            <input type="text" id="nome" placeholder="Seu Nome / Empresa" required>
+            <input type="email" id="email" placeholder="E-mail Corporativo" required>
+            <textarea id="mensagem" rows="4" placeholder="Como podemos ajudar na eficiência do seu contrato?"></textarea>
+            <button type="submit">Enviar Solicitação</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Vértice Facilities Consulting. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const nome = document.getElementById('nome').value;
+            alert(`Obrigado, ${nome}! A Vértice Consultoria recebeu sua solicitação e entrará em contato em breve.`);
+            this.reset();
+        });
+    </script>
+</body>
+</html>
